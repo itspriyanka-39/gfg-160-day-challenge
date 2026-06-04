@@ -1,0 +1,21 @@
+class Solution {
+    public ArrayList<int[]> mergeOverlap(int[][] arr) {
+        // Code here
+        
+        
+        Arrays.sort(arr,(a,b)->Integer.compare(a[0],b[0]));
+        ArrayList<int[]> ans=new ArrayList<>();
+        for(int[] interval:arr){
+            if(ans.isEmpty()|| ans.get(ans.size()-1)[1]<interval[0]){
+                ans.add(new int[]{interval[0],interval[1]});
+            }else{
+                ans.get(ans.size()-1)[1]=
+                Math.max(ans.get(ans.size()-1)[1],interval[1]);
+                
+            }
+        }
+        return ans;
+        
+        
+    }
+}
